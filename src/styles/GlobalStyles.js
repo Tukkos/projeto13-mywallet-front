@@ -62,8 +62,12 @@ body {
     font-weight: 400;
     /* font-family: 'Saira Stencil One', cursive; */
 }
+ion-icon {
+    width: 30px;
+    height: 30px;
+}
 .inputBar {
-    width: 90vw;
+    width: (100vw -50px);
     height: 55px;
     border: none;
     border-radius: 5px;

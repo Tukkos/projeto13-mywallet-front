@@ -6,6 +6,7 @@ import GlobalStyles from "../styles/GlobalStyles";
 
 import Login from "./login/Login";
 import Register from "./login/Register";
+import Home from "./screens/Home";
 
 import styled from "styled-components";
 
@@ -21,6 +22,7 @@ export default function App() {
                         <Routes>
                             <Route path="/" element={<Login setLoginInfos={setLoginInfos}/>} />
                             <Route path="/register" element={<Register />} />
+                            <Route path="/home" element={<Home />} />
                         </Routes>
                     </LoginContext.Provider>
                 </BrowserRouter>

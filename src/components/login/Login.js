@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 
 export default function Login({setLoginInfos}) {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
     const [userEmail, setUserEmail] = useState("");
@@ -29,6 +30,7 @@ export default function Login({setLoginInfos}) {
             console.log(login);
             setLoginInfos(login);
             setLoading(true);
+            navigate("/home", {});
         };        
     };
 
