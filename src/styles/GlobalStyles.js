@@ -72,6 +72,7 @@ body {
     font-size: 20px;
     padding-left: 20px;
     padding-right: 20px;
+    
     ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
         color: #d5d5d5;
     }

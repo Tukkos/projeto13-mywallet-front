@@ -5,6 +5,7 @@ import LoginContext from "../contexts/LoginContexts";
 import GlobalStyles from "../styles/GlobalStyles";
 
 import Login from "./login/Login";
+import Register from "./login/Register";
 
 import styled from "styled-components";
 
@@ -19,7 +20,7 @@ export default function App() {
                     <LoginContext.Provider value={{loginInfos}} >
                         <Routes>
                             <Route path="/" element={<Login setLoginInfos={setLoginInfos}/>} />
-                            {/* <Route path="/cadastro" element={<Register />} /> */}
+                            <Route path="/register" element={<Register />} />
                         </Routes>
                     </LoginContext.Provider>
                 </BrowserRouter>
