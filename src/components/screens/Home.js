@@ -1,22 +1,22 @@
 import styled from "styled-components"
 
 export default function Home() {
-    const transations = [];
+    const transactions = [];
 
     return (
         <HomeScreen>
             <div className="header">
-                Olá, SeuNome
+                <h1 className="head">Olá, SeuNome</h1>
                 <ion-icon name="enter-outline"></ion-icon>
             </div>
-            <div className="transitionsWindow">
-                {(transations.length === 0) ? <p>Não há registros de entrada ou saída</p> 
+            <div className="transactionsWindow">
+                {(transactions.length === 0) ? <p>Não há registros de entrada ou saída</p> 
                 : "" }
-                {(transations.map((transition) => (
+                {(transactions.map((transaction) => (
                     <p>Aaaa eu to maluco</p>
                 )))}
             </div>
-            <div className="sideBySide">
+            <div className="footer">
                 <button className="largeButton">
                     <ion-icon name="add-circle-outline"></ion-icon>
                     Nova entrada
@@ -34,6 +34,10 @@ export default function Home() {
 const HomeScreen = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    height: calc(100vh - 180px);
 .header {
     font-size: 26px;
     font-weight: 700;
@@ -41,25 +45,31 @@ const HomeScreen = styled.div`
     margin-bottom: 25px;
 
     display: flex;
-    justify-content: space-between;
 }
-.transitionsWindow {
+.head {
+    width: 75vw;
+}
+.transactionsWindow {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
 
-    width: (100vw -50px);
-    height: 65vh;
+    width: 80vw;
+    height: 100%;
     overflow: hidden;
     background: #ffffff;
     border-radius: 5px;
 }
-.sideBySide {
+.footer {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+
+    position: fixed;
+    bottom: 25px;
+    left: middle;
 }
 .largeButton {
     display: flex;
@@ -67,7 +77,7 @@ const HomeScreen = styled.div`
     justify-content: space-around;
     align-items: start; 
     
-    width: 43vw;
+    width: 38vw;
     height: 115px;
     border-radius: 5px;
     border: none;

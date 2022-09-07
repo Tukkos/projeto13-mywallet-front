@@ -67,7 +67,8 @@ ion-icon {
     height: 30px;
 }
 .inputBar {
-    width: (100vw -50px);
+    max-width: 350px;
+    width: 80vw;
     height: 55px;
     border: none;
     border-radius: 5px;
@@ -101,6 +102,12 @@ ion-icon {
 }
 .button {
     background: #A328D6;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 `;
 

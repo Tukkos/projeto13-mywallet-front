@@ -59,7 +59,7 @@ export default function Login({setLoginInfos}) {
                 />
 
                 {(loading) ? <button type="submit" className="inputBar button">Entrar</button>
-                : <button className="inputBar button"><ThreeDots color="#ffffff" height={40} width={40} /></button>};
+                : <button className="inputBar button"><ThreeDots color="#ffffff" height={40} width={40} /></button>}
             </form>
             <Link to="/register"><div className="link">Primeira vez? Cadastre-se!</div></Link>
         </LoginScreen>
