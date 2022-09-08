@@ -16,11 +16,9 @@ export default function Income() {
 
     function validation() {
         if (value === "") {
-            console.log("nao foi o valor");
             return false;
         };
         if (description === "") {
-            console.log("nao foi a descricao");
             return false;
         };
         return true;
@@ -53,7 +51,7 @@ export default function Income() {
             <form onSubmit={newIncome} className="form">
                 <input
                     className="inputBar"
-                    placeholder="Valor"
+                    placeholder="Valor (utilize `.` como `,`)"
                     type="number"
                     value={value}
                     onChange={e => setValue(e.target.value)}

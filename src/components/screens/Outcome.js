@@ -16,11 +16,9 @@ export default function Outcome() {
 
     function validation() {
         if (value === "") {
-            console.log("nao foi o valor");
             return false;
         };
         if (description === "") {
-            console.log("nao foi a descricao");
             return false;
         };
         return true;
@@ -30,7 +28,7 @@ export default function Outcome() {
         e.preventDefault();
 
         const income = {
-            value: value,
+            value: -value,
             description: description,
             type: "outcome",
             date: date
@@ -53,7 +51,7 @@ export default function Outcome() {
             <form onSubmit={newOutcome} className="form">
                 <input
                     className="inputBar"
-                    placeholder="Valor"
+                    placeholder="Valor (utilize `.` como `,`)"
                     type="number"
                     value={value}
                     onChange={e => setValue(e.target.value)}
