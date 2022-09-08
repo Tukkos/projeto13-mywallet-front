@@ -38,7 +38,7 @@ export default function Home() {
         <HomeScreen>
             <div className="header">
                 <h1 className="head">Olá, SeuNome</h1>
-                <ion-icon name="enter-outline"></ion-icon>
+                <Link to="/"><ion-icon name="enter-outline"></ion-icon></Link>
             </div>
             {(transactions.length === 0) ?
             <div className="transactionsWindow default"><p>Não há registros de entrada ou saída</p></div> :
