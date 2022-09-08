@@ -102,12 +102,25 @@ ion-icon {
 }
 .button {
     background: #A328D6;
+    color: #ffffff;
+    font-weight: 700;
 }
 .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.header {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 25px;
+
+    display: flex;
+}
+.head {
+    width: 75vw;
 }
 `;
 

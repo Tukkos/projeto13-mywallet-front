@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components"
 
 export default function Home() {
@@ -17,15 +18,19 @@ export default function Home() {
                 )))}
             </div>
             <div className="footer">
-                <button className="largeButton">
-                    <ion-icon name="add-circle-outline"></ion-icon>
-                    Nova entrada
-                </button>
+                <Link to="/income">
+                    <button className="largeButton">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                        Nova entrada
+                    </button>
+                </Link>
                 <span className="space"></span>
-                <button className="largeButton">
-                    <ion-icon name="remove-circle-outline"></ion-icon>
-                    Nova saída
-                </button>
+                <Link to="/outcome">
+                    <button className="largeButton">
+                        <ion-icon name="remove-circle-outline"></ion-icon>
+                        Nova saída
+                    </button>
+                </Link>
             </div>
         </HomeScreen>
     );
@@ -38,17 +43,6 @@ const HomeScreen = styled.div`
     align-items: center;
 
     height: calc(100vh - 180px);
-.header {
-    font-size: 26px;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 25px;
-
-    display: flex;
-}
-.head {
-    width: 75vw;
-}
 .transactionsWindow {
     display: flex;
     flex-direction: column;

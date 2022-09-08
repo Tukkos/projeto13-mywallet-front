@@ -94,7 +94,7 @@ export default function Register() {
                 />
 
                 {(loading) ? <button type="submit" className="inputBar button">Entrar</button>
-                : <button className="inputBar button"><ThreeDots color="#ffffff" height={40} width={40} /></button>};
+                : <button className="inputBar button"><ThreeDots color="#ffffff" height={40} width={40} /></button>}
             </form>
             <Link to="/"><div className="link">Já tem uma conta? Entre agora!</div></Link>
         </RegisterScreen>
