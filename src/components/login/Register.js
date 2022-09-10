@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 
+import { postRegister } from "../../services/myWallet.js";
+
 export default function Register() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -11,7 +13,6 @@ export default function Register() {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const [userPasswordConfirmation, setUserPasswordConfirmation] = useState("");
-
 
     function validation() {
         if (userName === "") {
@@ -48,9 +49,17 @@ export default function Register() {
         if (validate === true) {
             setLoading(false);
 
-            console.log(register);
-            setLoading(true);
-            navigate("/", {});
+            postRegister(register).then(() => {
+                console.log(register);
+                navigate("/", {});
+            });
+
+            postRegister(register).catch((error) => {
+                if (error.response.status === 409) {
+                    alert("Email em uso, favor utilizar outro.");
+                };
+                setLoading(true);
+            });
         };        
     };
 
