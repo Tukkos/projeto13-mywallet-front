@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from "react-loader-spinner";
 
+import { postSignIn } from "../../services/myWallet.js";
+
 export default function Login({setLoginInfos}) {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -25,12 +27,19 @@ export default function Login({setLoginInfos}) {
             const login = {
                 email: userEmail,
                 password: userPassword
-            }
-    
-            console.log(login);
-            setLoginInfos(login);
-            setLoading(true);
-            navigate("/home", {});
+            };
+
+            postSignIn(login).then((res) => {
+                setLoginInfos(res.data);
+                console.log(res.data);
+                return navigate("/home", {});
+            });
+            postSignIn(login).catch((error) => {
+                if (error.response.status === 401) {
+                    alert("Usuário não encontrado, login ou senha incorretos");
+                };
+                setLoading(true);
+            });            
         };        
     };
 

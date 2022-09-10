@@ -1,24 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components"
 
 import Transactions from "./Transactions";
+import { getTransactions } from "../../services/myWallet";
+import LoginContext from "../../contexts/LoginContexts";
 
 export default function Home() {
-    const transactions = [
-        {
-            value: '-666',
-            description: 'Neon Demon',
-            type: 'outcome',
-            date: '08/09'
-        },
-        {
-            value: '122',
-            description: 'Apeu',
-            type: 'income',
-            date: '08/09'
-        }
-    ];
+    const { loginInfos } = useContext(LoginContext);
+    // const token = loginInfos[0].token;
+    console.log(loginInfos);
+    // const transactionAuth = { headers: {"Authorization": "Bearer " + token}};
+    const [transactions, setTransactions] = useState([]);
 
     const [sumCLass, setSumClass] = useState("transitionsWindowFooterValue income");
     let sum = 0;
@@ -33,11 +26,14 @@ export default function Home() {
         };
     }, [sum]);
     
+    useEffect(() => {
+        getTransactions()
+    })
 
     return (
         <HomeScreen>
             <div className="header">
-                <h1 className="head">Olá, SeuNome</h1>
+                <h1 className="head">Olá, {loginInfos.name}</h1>
                 <Link to="/"><ion-icon name="enter-outline"></ion-icon></Link>
             </div>
             {(transactions.length === 0) ?
