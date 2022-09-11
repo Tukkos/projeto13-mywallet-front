@@ -18,23 +18,17 @@ export default function App() {
     return (
         <>
             <GlobalStyles />
-            <Wrapper>
-                <BrowserRouter>
-                    <LoginContext.Provider value={{loginInfos}} >
-                        <Routes>
-                            <Route path="/" element={<Login setLoginInfos={setLoginInfos}/>} />
-                            <Route path="/register" element={<Register />} />
-                            <Route path="/home" element={<Home />} />
-                            <Route path="/income" element={<Income />} />
-                            <Route path="/outcome" element={<Outcome />} />
-                        </Routes>
-                    </LoginContext.Provider>
-                </BrowserRouter>
-            </Wrapper>
+            <BrowserRouter>
+                <LoginContext.Provider value={{loginInfos}} >
+                    <Routes>
+                        <Route path="/" element={<Login setLoginInfos={setLoginInfos}/>} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/income" element={<Income />} />
+                        <Route path="/outcome" element={<Outcome />} />
+                    </Routes>
+                </LoginContext.Provider>
+            </BrowserRouter>
         </>
     );
 };
-
-const Wrapper = styled.div`
-
-`;

@@ -13,8 +13,6 @@ export default function Login({setLoginInfos}) {
     const [userPassword, setUserPassword] = useState("");
 
     function login(e) {
-        e.preventDefault();
-
         if (userEmail === "") {
             alert("Favor inserir seu email.");
         };
@@ -22,6 +20,7 @@ export default function Login({setLoginInfos}) {
             alert("Favor inserir sua senha.");
         };
         if (userEmail !== "" && userPassword !== "") {
+            e.preventDefault();
             setLoading(false);
             
             const login = {
@@ -31,10 +30,8 @@ export default function Login({setLoginInfos}) {
 
             postSignIn(login).then((res) => {
                 setLoginInfos(res.data);
-                console.log(res.data);
                 return navigate("/home", {});
-            });
-            postSignIn(login).catch((error) => {
+            }).catch((error) => {
                 if (error.response.status === 401) {
                     alert("Usuário não encontrado, login ou senha incorretos");
                 };

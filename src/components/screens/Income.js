@@ -24,12 +24,15 @@ export default function Income() {
 
     function validation() {
         if (value === "") {
-            return false;
+            alert("Favor inserir um Valor.")
         };
         if (description === "") {
-            return false;
+            alert("Favor inserir uma descrição.")
         };
-        return true;
+        if (value !== "" && description !== "") {
+            return true;
+        };
+        return false;
     };
 
     function newIncome(e) {
@@ -48,8 +51,7 @@ export default function Income() {
 
             postIncome(income, transactionAuth).then(() => {
                 navigate("/home", {});
-            });
-            postIncome(income, transactionAuth).catch(() => {
+            }).catch(() => {
                 setLoading(true);
                 alert("Tempo de logout, favor reiniciar a sessão e tentar novamente.");
             });

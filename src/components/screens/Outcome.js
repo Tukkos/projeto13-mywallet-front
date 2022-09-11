@@ -23,12 +23,15 @@ export default function Outcome() {
 
     function validation() {
         if (value === "") {
-            return false;
+            alert("Favor inserir um Valor.")
         };
         if (description === "") {
-            return false;
+            alert("Favor inserir uma descrição.")
         };
-        return true;
+        if (value !== "" && description !== "") {
+            return true;
+        };
+        return false;
     };
 
     function newOutcome(e) {
@@ -47,8 +50,7 @@ export default function Outcome() {
 
             postOutcome(outcome, transactionAuth).then(() => {
                 navigate("/home", {});
-            });
-            postOutcome(outcome, transactionAuth).catch(() => {
+            }).catch(() => {
                 setLoading(true);
                 alert("Tempo de logout, favor reiniciar a sessão e tentar novamente.");
             });

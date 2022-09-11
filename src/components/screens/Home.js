@@ -40,7 +40,7 @@ export default function Home() {
             {(transactions.length === 0) ?
             <div className="transactionsWindow default"><p>Não há registros de entrada ou saída</p></div> :
             <div className="transactionsWindow">
-                <div className="aaaa">
+                <div className="subTransactionWindow">
                     {(transactions.map((transaction) => (
                             <Transactions
                                 value={transaction.value}
@@ -50,8 +50,8 @@ export default function Home() {
                             />
                     )))}
                 </div>
-                <div className="backgroundCollor">
-                    <div className="transitionsWindowFooterSoma">
+                <div className="totalBackgroundCollor">
+                    <div className="transitionsWindowFooterTotal">
                         <h6>SALDO</h6>
                     </div>
                     <div className={sumCLass}>
@@ -87,7 +87,7 @@ const HomeScreen = styled.div`
 
     height: calc(100vh - 180px);
     position: relative;
-.aaaa {
+.subTransactionWindow {
     height: 100vh;
 } 
 .transactionsWindow {
@@ -100,7 +100,7 @@ const HomeScreen = styled.div`
     
     display: grid;
 }
-.transitionsWindowFooterSoma {
+.transitionsWindowFooterTotal {
     margin-left: 5px;
     font-weight: 700;
     width: 10vw;
@@ -121,7 +121,7 @@ const HomeScreen = styled.div`
 .outcome {
     color: #C70000;
 }
-.backgroundCollor {
+.totalBackgroundCollor {
     display: flex;
     justify-content: space-between;
     height: 20px;

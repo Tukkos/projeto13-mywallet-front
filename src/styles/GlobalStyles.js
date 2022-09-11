@@ -60,7 +60,6 @@ body {
     background-color: #8C11BE;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
-    /* font-family: 'Saira Stencil One', cursive; */
 }
 ion-icon {
     width: 30px;
@@ -101,6 +100,9 @@ ion-icon {
     }
 }
 .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #A328D6;
     color: #ffffff;
     font-weight: 700;

@@ -17,23 +17,23 @@ export default function Register() {
     function validation() {
         if (userName === "") {
             alert("Favor inserir seu nome.");
-            return false;
         };
         if (userEmail === "") {
             alert("Favor inserir seu email.");
-            return false;
         };
         if (userPassword === "") {
             alert("Favor inserir sua senha.");
-            return false;
+        };
+        if (userPasswordConfirmation === "") {
+            alert("Favor confirmar a senha.");
         };
         if (userPassword !== userPasswordConfirmation) {
-            alert("Favor inserir a mesma senha.");
-            return false;
+            alert("Senha e a confirmação não são as mesmas.");
         };
         if (userName !== "" && userEmail !== "" && userPassword !== "" && userPassword === userPasswordConfirmation) {
             return true;
         };
+        return false;
     };
 
     function register(e) {
@@ -50,11 +50,9 @@ export default function Register() {
             setLoading(false);
 
             postRegister(register).then(() => {
-                console.log(register);
+                alert("Usuário criado com sucesso");
                 navigate("/", {});
-            });
-
-            postRegister(register).catch((error) => {
+            }).catch((error) => {
                 if (error.response.status === 409) {
                     alert("Email em uso, favor utilizar outro.");
                 };
@@ -97,12 +95,13 @@ export default function Register() {
                 <input
                     className="inputBar"
                     placeholder="Confirme a senha"
+                    type="password"
                     value={userPasswordConfirmation}
                     onChange={e => setUserPasswordConfirmation(e.target.value)}
                     disabled={(loading) ? "" : "disabled"}
                 />
 
-                {(loading) ? <button type="submit" className="inputBar button">Entrar</button>
+                {(loading) ? <button type="submit" className="inputBar button">Cadastrar</button>
                 : <button className="inputBar button"><ThreeDots color="#ffffff" height={40} width={40} /></button>}
             </form>
             <Link to="/"><div className="link">Já tem uma conta? Entre agora!</div></Link>
