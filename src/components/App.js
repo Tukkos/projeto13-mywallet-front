@@ -10,8 +10,6 @@ import Home from "./screens/Home";
 import Income from "./screens/Income";
 import Outcome from "./screens/Outcome";
 
-import styled from "styled-components";
-
 export default function App() {
     const [loginInfos, setLoginInfos] = useState([]);
 
