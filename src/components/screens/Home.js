@@ -8,9 +8,6 @@ import LoginContext from "../../contexts/LoginContexts";
 
 export default function Home() {
     const { loginInfos } = useContext(LoginContext);
-    // const token = loginInfos[0].token;
-    console.log(loginInfos);
-    // const transactionAuth = { headers: {"Authorization": "Bearer " + token}};
     const [transactions, setTransactions] = useState([]);
 
     const [sumCLass, setSumClass] = useState("transitionsWindowFooterValue income");
@@ -18,7 +15,6 @@ export default function Home() {
     transactions.forEach(value => {
         sum = sum + Number(value.value);
     });
-    console.log(sum);
 
     useEffect(() => {
         if (Number(sum) < 0) {
@@ -27,8 +23,13 @@ export default function Home() {
     }, [sum]);
     
     useEffect(() => {
-        getTransactions()
-    })
+        const token = loginInfos.token;
+        const transactionAuth = { headers: {"auth": "Bearer " + token}};
+
+        getTransactions(transactionAuth).then((res) => {
+            setTransactions(res.data);
+        });
+    }, [loginInfos]);
 
     return (
         <HomeScreen>

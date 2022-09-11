@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { ThreeDots } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import dayjs from "dayjs";
+
+import { postOutcome } from "../../services/myWallet";
+import LoginContext from "../../contexts/LoginContexts";
 
 let now = dayjs();
 const date = now.format("DD/MM")
@@ -13,6 +16,10 @@ export default function Outcome() {
 
     const [value, setValue] = useState("");
     const [description, setDescription] = useState("");
+
+    const { loginInfos } = useContext(LoginContext);
+    const token = loginInfos.token;
+    const transactionAuth = { headers: {"auth": "Bearer " + token}};
 
     function validation() {
         if (value === "") {
@@ -27,7 +34,7 @@ export default function Outcome() {
     function newOutcome(e) {
         e.preventDefault();
 
-        const income = {
+        const outcome = {
             value: -value,
             description: description,
             type: "outcome",
@@ -37,9 +44,14 @@ export default function Outcome() {
         const validate = validation();
         if (validate === true) {
             setLoading(false);
-            console.log(income);
-            setLoading(true);
-            navigate("/home", {});
+
+            postOutcome(outcome, transactionAuth).then(() => {
+                navigate("/home", {});
+            });
+            postOutcome(outcome, transactionAuth).catch(() => {
+                setLoading(true);
+                alert("Tempo de logout, favor reiniciar a sessão e tentar novamente.");
+            });
         };
     };
 

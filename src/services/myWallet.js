@@ -12,18 +12,18 @@ function postSignIn(login) {
     return promise;
 };
 
-function getTransactions(userTransactions) {
-    const promise = axios.post(`${BASE_URL}/home`, userTransactions);
+function getTransactions(transactionAuth) {
+    const promise = axios.get(`${BASE_URL}/home`, transactionAuth);
     return promise;
 };
 
-function postIncome(userIncome) {
-    const promise = axios.post(`${BASE_URL}/income`, userIncome);
+function postIncome(userIncome, transactionAuth) {
+    const promise = axios.post(`${BASE_URL}/income`, userIncome, transactionAuth);
     return promise;
 };
 
-function postOutcome(userOutcome) {
-    const promise = axios.post(`${BASE_URL}/outcome`, userOutcome);
+function postOutcome(userOutcome, transactionAuth) {
+    const promise = axios.post(`${BASE_URL}/outcome`, userOutcome, transactionAuth);
     return promise;
 };
 
