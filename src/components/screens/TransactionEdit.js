@@ -7,11 +7,10 @@ import dayjs from "dayjs";
 import { updateTransaction } from "../../services/myWallet";
 import LoginContext from "../../contexts/LoginContexts";
 
-
 let now = dayjs();
 const date = now.format("DD/MM")
 
-export default function IncomeEdi() {
+export default function TransactionEdit() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const params = useParams();
