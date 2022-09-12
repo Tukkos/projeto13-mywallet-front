@@ -27,10 +27,16 @@ function postOutcome(userOutcome, transactionAuth) {
     return promise;
 };
 
+function updateTransaction(userTransactionEdit, transactionAuth, transactionParams) {
+    const promise = axios.put(`${BASE_URL}/editTransaction/${transactionParams}`, userTransactionEdit, transactionAuth);
+    return promise;
+};
+
 export {
     postRegister,
     postSignIn,
     getTransactions,
     postIncome,
-    postOutcome
+    postOutcome,
+    updateTransaction
 };

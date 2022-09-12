@@ -1,19 +1,23 @@
 import styled from "styled-components";
 import { ThreeDots } from "react-loader-spinner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import dayjs from "dayjs";
 
-import { postIncome } from "../../services/myWallet";
+import { updateTransaction } from "../../services/myWallet";
 import LoginContext from "../../contexts/LoginContexts";
 
 
 let now = dayjs();
 const date = now.format("DD/MM")
 
-export default function Income() {
+export default function IncomeEdi() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
+    const params = useParams();
+
+    const transactionParams = params.idTransaction;
+    const transactionType = params.typeTransaction;
 
     const [value, setValue] = useState("");
     const [description, setDescription] = useState("");
@@ -35,21 +39,35 @@ export default function Income() {
         return false;
     };
 
-    function newIncome(e) {
+    function editTransaction(e) {
         e.preventDefault();
+        let transactionEdit = {};
 
-        const income = {
-            value: value,
-            description: description,
-            type: "income",
-            date: date
+        switch (transactionType) {
+            case "outcome":
+                transactionEdit = {
+                    value: -value,
+                    description: description,
+                    type: transactionType,
+                    date: date
+                };
+                break;
+        
+            default:
+                transactionEdit = {
+                    value: value,
+                    description: description,
+                    type: transactionType,
+                    date: date
+                };
+                break;
         };
 
         const validate = validation();
         if (validate === true) {
             setLoading(false);
 
-            postIncome(income, transactionAuth).then(() => {
+            updateTransaction(transactionEdit, transactionAuth, transactionParams).then(() => {
                 navigate("/home", {});
             }).catch(() => {
                 setLoading(true);
@@ -59,11 +77,13 @@ export default function Income() {
     };
 
     return (
-        <TransactionsScreen>
+        <TransactionsEditScreen>
             <div className="header">
-                <h1 className="head">Nova entrada</h1>
+                {(transactionType === "outcome") ? <h1 className="head">Editar saída</h1>
+                : <h1 className="head">Editar entrada</h1>}
+                
             </div>
-            <form onSubmit={newIncome} className="form">
+            <form onSubmit={editTransaction} className="form">
                 <input
                     className="inputBar"
                     placeholder="Valor (utilize `.` como `,`)"
@@ -80,14 +100,15 @@ export default function Income() {
                     onChange={e => setDescription(e.target.value)}
                     disabled={(loading) ? "" : "disabled"}
                 />
-                {(loading) ? <button type="submit" className="inputBar button">Salvar entrada</button>
+                {(loading) ? <> {(transactionType === "outcome") ? <button type="submit" className="inputBar button">Atualizar saída</button>
+                    : <button type="submit" className="inputBar button">Atualizar entrada</button>} </>
                 : <button className="inputBar button"><ThreeDots color="#ffffff" height={40} width={40} /></button>}
             </form>
-        </TransactionsScreen>
+        </TransactionsEditScreen>
     );
 };
 
-const TransactionsScreen = styled.div`
+const TransactionsEditScreen = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: start;

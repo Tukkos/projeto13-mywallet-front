@@ -1,16 +1,20 @@
 // import { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Transactions({date, description, value, type}) {
+export default function Transactions({date, description, value, type, transactionId}) {
     return (
         <TransactionLine>
             <div className="line">
                 <div className="date">
                     {date}
                 </div>
-                <div className="description">
-                    {description}
-                </div>
+                <Link to={`/editTransaction/${type}/${transactionId}`} className="description">
+                    <div>
+                        {description}
+                    </div>
+                </Link>
+                
                 <div className={type}>
                     {Number(value).toFixed(2)}
                 </div>

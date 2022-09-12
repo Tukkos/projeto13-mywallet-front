@@ -47,6 +47,7 @@ export default function Home() {
                                 description={transaction.description}
                                 date={transaction.date}
                                 type={transaction.type}
+                                transactionId={transaction._id}
                             />
                     )))}
                 </div>

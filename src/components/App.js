@@ -9,6 +9,7 @@ import Register from "./login/Register";
 import Home from "./screens/Home";
 import Income from "./screens/Income";
 import Outcome from "./screens/Outcome";
+import TransactionEdit from "./screens/TransactionEdit";
 
 export default function App() {
     const [loginInfos, setLoginInfos] = useState([]);
@@ -24,6 +25,7 @@ export default function App() {
                         <Route path="/home" element={<Home />} />
                         <Route path="/income" element={<Income />} />
                         <Route path="/outcome" element={<Outcome />} />
+                        <Route path="/editTransaction/:typeTransaction/:idTransaction" element={<TransactionEdit />} />
                     </Routes>
                 </LoginContext.Provider>
             </BrowserRouter>
