@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# myWallet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MyWallet is an easy to use finance tracker that allows user to save incomes and outcomes and see a resume.
 
-## Available Scripts
+![MyWallet](https://im4.ezgif.com/tmp/ezgif-4-24e757a820.gif)
 
-In the project directory, you can run:
+## About
+
+This is my first full-stack web app project to easily track your finances. The implemented features are:
+
+* Sign-up;
+* Login;
+* Add an income;
+* Add an Outcome;
+* Automatically bring a result of your finances.
+
+## Technologies
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+
+## Getting Started with docker
+
+TBA
+
+## Getting Started with npm, node and mongodb
+
+First clone frontend repository and run:
+
+### `npm i`
+
+After that run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Then clone backend repository and run: 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm i`
 
-### `npm test`
+Create an .env with:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`PORT=5000` <br>
+`MONGO_URI=mongodb://localhost:27017`
 
-### `npm run build`
+Start Mongo server running:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `mongod --dbpath ~/.mongo`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In another terminal window execute Mongo running:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `mongo`
 
-### `npm run eject`
+Create a database running: 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `use myWallet`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create the collections:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `db.createCollection(transactions)`
+### `db.createCollection(users)`
+### `db.createCollection(sessions)`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Then, in another terminal window, start backend running:
 
-## Learn More
+### `node src/index.js`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
