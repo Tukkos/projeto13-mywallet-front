@@ -2,7 +2,7 @@
 
 MyWallet is an easy to use finance tracker that allows user to save incomes and outcomes and see a resume.
 
-![MyWallet](https://im4.ezgif.com/tmp/ezgif-4-24e757a820.gif)
+![MyWallet](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzI4ODIxM2RkYTIwOTcxOGYyNjc1OTEzMzQ3Yzg5ZmQzZTY3ZTE2MSZjdD1n/61AZrFnLtwsh2UTd53/giphy.gif)
 
 ## About
 
